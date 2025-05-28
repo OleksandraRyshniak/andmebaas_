@@ -1,37 +1,75 @@
 import sqlite3
-import tkinter as tk
-from tkinter import messagebox, ttk
+import tkinter as tk 
+from tkinter import messagebox
+from tkinter import ttk
+global entries
 
-# Создание таблиц
-table_keeled = """
+
+# create_table="""
+#  CREATE TABLE IF NOT EXISTS movies (
+#   id INTEGER PRIMARY KEY AUTOINCREMENT,
+#   title TEXT NOT NULL,
+#   director TEXT,
+#   release_year INTEGER,
+#   genre TEXT,
+#   duration INTEGER,
+#   rating REAL,
+#   language TEXT,
+#   country TEXT,
+#   description TEXT
+# );
+# """
+
+table_keeled="""
 CREATE TABLE IF NOT EXISTS languages (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT UNIQUE NOT NULL
 );
 """
+insert_keeled="""
+insert into languages(name)
+values("English")
+"""
 
-table_riigid = """
+table_riigid="""
 CREATE TABLE IF NOT EXISTS countries (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT UNIQUE NOT NULL
 );
 """
+insert_riigid="""
+insert into countries(name)
+values("USA"), ("UK"), ("France"), ("Germany"), ("Italy")
+"""
 
-table_zanrid = """
+table_zanrid="""
 CREATE TABLE IF NOT EXISTS genres (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT UNIQUE NOT NULL
 );
 """
+insert_zanrid="""
+insert into genres(name)
+values("Drama"), ("Sci-Fi"), ("Crime"), ("Adventure"), ("Action"), ("Thriller"), ("Comedy")
+"""
 
-table_rezissoorid = """
+table_rezissoorid="""
 CREATE TABLE IF NOT EXISTS directors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT UNIQUE NOT NULL
 );
 """
+insert_rezissoorid="""
+insert into directors(name)
+values
+("Francis Ford Coppola"),
+("Christopher Nolan"), 
+("Quentin Tarantino"), 
+("Steven Spielberg"),
+("Martin Scorsese")
+"""
 
-create_filmid = """
+create_filmid="""
 CREATE TABLE IF NOT EXISTS movies (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT NOT NULL,
@@ -48,6 +86,25 @@ CREATE TABLE IF NOT EXISTS movies (
   FOREIGN KEY (language_id) REFERENCES languages(id),
   FOREIGN KEY (country_id) REFERENCES countries(id)
 );
+"""
+
+insert_zanrid="""
+insert into genres(name)
+values("Drama"), ("Sci-Fi"), ("Crime"), ("Adventure"), ("Action"), ("Thriller"), ("Comedy")
+"""
+
+insert_into ="""
+INSERT INTO movies (title, director_id, release_year, genre_id, duration, rating, language_id, country_id, description) VALUES
+('The From In With.',1, 1994, 1, 142, 9.3, 1,1, 'The In With By On. A In From By The At. On A With By By On To A.'),
+('The By On To.', 2, 2010, 2, 148, 8.8, 1, 2, 'The A The On The In. By To A At On The. From The In With At In To A.'),
+('In The With On.', 3, 1972, 3, 175, 9.2, 1, 1, 'On From The By At The A. In From By With To On. A The By In With At On To A.'),
+('The A To From.', 4, 1994, 4, 154, 8.9, 1, 3, 'With By In The A On. The With To A At The From. On A From With At By The.'),
+('On The From With.', 5, 2008, 5, 152, 9.0, 1, 4, 'The A By On In The. At With To A From On The. With On By The A In To From.'),
+('From The By With.', 2, 1960, 1, 134, 8.5, 1, 2, 'The A On From The At. With To By In A The On. At The In From With By To A.'),
+('The By On A.', 1, 1999, 6, 112, 7.8, 1, 1, 'A The On By In The At. From With A On By To The. In The By With At A From.'),
+('On A The From.', 3, 2015, 7, 126, 7.9, 1, 5, 'By With A On In The From. The By At A With On To. At In The By From With A.'),
+('By The On From.', 4, 1975, 5, 143, 8.7, 1, 3, 'A With On The By From In. The A At On With To From. By In The A From With At On.'),
+('From With The By.', 5, 1980, 3, 163, 9.1, 1, 4, 'On The A By In The From. With By On A The In From. To The In At By With On A.');
 """
 
 # Функция для создания таблиц
