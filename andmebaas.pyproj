@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>635a033f-35da-44ae-bc20-28b9a67587ef</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>and.py</StartupFile>
+    <StartupFile>andmebaas.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
